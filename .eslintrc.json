@@ -1,20 +1,19 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
+  "env": { "browser": true, "es2021": true },
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
   "ignorePatterns": ["node_modules", "dist", "build"],
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["prettier", "import"],
+  "plugins": ["react", "prettier", "import"],
   "rules": {
     "import/no-unresolved": [2, { "caseSensitive": false }],
     "import/order": [
@@ -35,12 +34,15 @@
     "linebreak-style": [0, "windows"],
     "prettier/prettier": "error",
     "quotes": ["error", "single"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": "off",
     "semi": ["error", "never"]
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
         "moduleDirectory": ["node_modules", "src/"]
       }
     }
