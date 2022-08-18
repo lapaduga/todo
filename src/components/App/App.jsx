@@ -11,11 +11,21 @@ function App() {
     {
       id: 1,
       state: 'completed',
-      value: 'Completed task',
+      value: 'Completed task in timer-todo-list',
       timestamp: Date.now()
     },
-    { id: 2, state: 'editing', value: 'Editing task', timestamp: Date.now() },
-    { id: 3, state: '', value: 'Active task', timestamp: Date.now() }
+    {
+      id: 2,
+      state: 'editing',
+      value: 'Editing task in timer-todo-list',
+      timestamp: Date.now()
+    },
+    {
+      id: 3,
+      state: '',
+      value: 'Active task in timer-todo-list',
+      timestamp: Date.now()
+    }
   ])
   const [formValue, setFormValue] = useState('')
   const [counter, setCounter] = useState(4)
