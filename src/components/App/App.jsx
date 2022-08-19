@@ -11,19 +11,19 @@ function App() {
     {
       id: 1,
       state: 'completed',
-      value: 'Completed task in timer-todo-list',
+      value: 'Task 1',
       timestamp: Date.now()
     },
     {
       id: 2,
       state: 'editing',
-      value: 'Editing task in timer-todo-list',
+      value: 'Task 2',
       timestamp: Date.now()
     },
     {
       id: 3,
       state: '',
-      value: 'Active task in timer-todo-list',
+      value: 'Task 3',
       timestamp: Date.now()
     }
   ])

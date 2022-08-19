@@ -1,6 +1,7 @@
-import './Task.scss'
 import PropTypes from 'prop-types'
 import { formatDistanceToNow } from 'date-fns'
+
+import Timer from '../Timer/Timer'
 
 function Task({
   props,
@@ -22,8 +23,9 @@ function Task({
           checked={props.state === 'completed' ? true : false}
         />
         <label>
-          <span className="description">{props.value}</span>
-          <span className="created">
+          <span className="title">{props.value}</span>
+          <Timer />
+          <span className="description">
             created{' '}
             {formatDistanceToNow(new Date(props.timestamp), {
               addSuffix: addSuffix,
