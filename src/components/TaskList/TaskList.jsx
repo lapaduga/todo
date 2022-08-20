@@ -1,7 +1,17 @@
 import Task from '../Task/Task'
 import './TaskList.scss'
 
-function TaskList({ data, onDeleted, onComplete, onEdit, onEnter, onChange }) {
+function TaskList({
+  data,
+  onDeleted,
+  onComplete,
+  onEdit,
+  onEnter,
+  onChange,
+  minutes,
+  seconds,
+  setFormTimeToZero
+}) {
   return (
     <ul className="todo-list">
       {data.map((item) => (
@@ -13,6 +23,9 @@ function TaskList({ data, onDeleted, onComplete, onEdit, onEnter, onChange }) {
           onEdit={() => onEdit(item.id)}
           onEnter={onEnter}
           onChange={onChange}
+          minutes={minutes}
+          seconds={seconds}
+          setFormTimeToZero={setFormTimeToZero}
         />
       ))}
     </ul>

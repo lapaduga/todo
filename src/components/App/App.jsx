@@ -8,7 +8,7 @@ import './App.scss'
 
 function App() {
   const [tasks, setTasks] = useState([
-    {
+    /*     {
       id: 1,
       state: 'completed',
       value: 'Task 1',
@@ -25,15 +25,46 @@ function App() {
       state: '',
       value: 'Task 3',
       timestamp: Date.now()
-    }
+    } */
   ])
   const [formValue, setFormValue] = useState('')
+  const [formMinutes, setFormMinutes] = useState('')
+  const [formSeconds, setFormSeconds] = useState('')
   const [counter, setCounter] = useState(4)
   const [filter, setFilter] = useState([
     { value: 'All', clazz: 'selected' },
     { value: 'Active', clazz: '' },
     { value: 'Completed', clazz: '' }
   ])
+
+  const changeMinutes = (value) => {
+    if (+value || value === '') {
+      if (value.length <= 2) {
+        if (+value > 59) {
+          setFormMinutes(59)
+        } else {
+          setFormMinutes(value)
+        }
+      }
+    }
+  }
+
+  const changeSeconds = (value) => {
+    if (+value || value === '') {
+      if (value.length <= 2) {
+        if (+value > 59) {
+          setFormSeconds(59)
+        } else {
+          setFormSeconds(value)
+        }
+      }
+    }
+  }
+
+  const setFormTimeToZero = () => {
+    setFormMinutes('')
+    setFormSeconds('')
+  }
 
   const tasksLeft = () => tasks.filter((item) => item.state === '').length
 
@@ -143,8 +174,12 @@ function App() {
     <section className="todoapp">
       <NewTaskForm
         value={formValue}
+        minutes={formMinutes}
+        seconds={formSeconds}
         onChange={changeFormValue}
         onEnter={createTask}
+        onMinutesChange={changeMinutes}
+        onSecondsChange={changeSeconds}
       />
       <section className="main">
         <TaskList
@@ -154,6 +189,9 @@ function App() {
           onComplete={completeTask}
           onEnter={enterTask}
           onChange={changeTask}
+          minutes={formMinutes}
+          seconds={formSeconds}
+          setFormTimeToZero={setFormTimeToZero}
         />
         <Footer
           filter={filter}

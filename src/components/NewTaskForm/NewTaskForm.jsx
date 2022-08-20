@@ -1,6 +1,14 @@
 import './NewTaskForm.scss'
 
-function NewTaskForm({ value, onChange, onEnter }) {
+function NewTaskForm({
+  value,
+  onChange,
+  onEnter,
+  minutes,
+  seconds,
+  onMinutesChange,
+  onSecondsChange
+}) {
   return (
     <header className="header">
       <h1>todos</h1>
@@ -13,8 +21,18 @@ function NewTaskForm({ value, onChange, onEnter }) {
           onChange={(event) => onChange(event)}
           onKeyPress={(event) => onEnter(event)}
         />
-        <input className="new-todo-form__timer" placeholder="Min" autoFocus />
-        <input className="new-todo-form__timer" placeholder="Sec" autoFocus />
+        <input
+          className="new-todo-form__timer"
+          placeholder="Min"
+          value={minutes}
+          onChange={(event) => onMinutesChange(event.target.value)}
+        />
+        <input
+          className="new-todo-form__timer"
+          placeholder="Sec"
+          value={seconds}
+          onChange={(event) => onSecondsChange(event.target.value)}
+        />
       </form>
     </header>
   )

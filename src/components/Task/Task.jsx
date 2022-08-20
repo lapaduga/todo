@@ -11,7 +11,10 @@ function Task({
   onEnter,
   onChange,
   addSuffix,
-  includeSeconds
+  includeSeconds,
+  minutes,
+  seconds,
+  setFormTimeToZero
 }) {
   return (
     <li data-id={props.id} className={props.state}>
@@ -24,7 +27,11 @@ function Task({
         />
         <label>
           <span className="title">{props.value}</span>
-          <Timer />
+          <Timer
+            minutes={minutes}
+            seconds={seconds}
+            setFormTimeToZero={setFormTimeToZero}
+          />
           <span className="description">
             created{' '}
             {formatDistanceToNow(new Date(props.timestamp), {
